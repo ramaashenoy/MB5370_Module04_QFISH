@@ -1,0 +1,12 @@
+---
+title: "QFISH_NetFishery_Data"
+author: "Ramaa Shenoy"
+format: html
+date: "2024-09-09"
+---
+
+Packages
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
