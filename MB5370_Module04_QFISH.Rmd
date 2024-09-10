@@ -5,8 +5,36 @@ format: html
 date: "2024-09-09"
 ---
 
-Packages
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+# STEP-1: Installing and loading packages
+```{r}
+#install.packages("usethis")
+#install.packages("tidyverse")
+library(tidyverse)
 ```
 
+# STEP-2: Committing the project to my GitHub repository
+```{r}
+library("usethis")
+usethis::use_github()
+```
+
+#Dataset can be downloaded from: https://qfish.fisheries.qld.gov.au/query/commercial-net-fishery/table
+
+# STEP-3: Loading the dataset:
+```{r}
+getwd()
+export <-
+read_csv("data/export.csv") 
+```
+#Note to self: Adding data in line 27 adds the specified folder in where the dataset has been stored in R
+
+#STEP-4: 
+head(export)
+
+export |>
+filter(CalendarYear != "Grand Total") |>
+group_by(CalendarYear) |>
+mutate(CalendarYear = as.numeric(CalendarYear)) 
+ggplot (xlab= CalendarYear, ylab= Tonnes)+
+geom_point()+
+geom_line()
