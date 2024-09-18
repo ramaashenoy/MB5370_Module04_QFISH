@@ -30,11 +30,3 @@ read_csv("data/export.csv")
 
 #STEP-4: 
 head(export)
-
-export |>
-filter(CalendarYear != "Grand Total") |>
-group_by(CalendarYear) |>
-mutate(CalendarYear = as.numeric(CalendarYear)) 
-ggplot (xlab= CalendarYear, ylab= Tonnes)+
-geom_point()+
-geom_line()
