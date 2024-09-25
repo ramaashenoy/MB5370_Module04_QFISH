@@ -12,6 +12,7 @@ date: "2024-09-09"
 #install.packages("readr")
 library(readr)
 library(tidyverse)
+library(ggplot2)
 ```
 
 # STEP-2: Committing the project to my GitHub repository
