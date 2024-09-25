@@ -9,6 +9,8 @@ date: "2024-09-09"
 ```{r}
 #install.packages("usethis")
 #install.packages("tidyverse")
+#install.packages("readr")
+library(readr)
 library(tidyverse)
 ```
 
@@ -28,5 +30,24 @@ read_csv("data/export.csv")
 ```
 #Note to self: Adding data in line 27 adds the specified folder in where the dataset has been stored in R
 
-#STEP-4: 
-head(export)
+#STEP-4: Reading the data:
+```{r}
+view(export)
+```
+
+#STEP-5: Creating the ggplot:
+```{r}
+ggplot(data = export) +
+  aes(x = as.numeric(CalendarYear)) +
+  geom_line(aes(y = Tonnes), color = "blue", size = 1) +  # Line of best fit for Tonnes of fish caught
+  geom_point(aes(y = Tonnes), color = "red", size = 2) +  # Points for Tonnes of fish caught
+  geom_line(aes(y = Days), color = "green", size = 1) +  # Line of best fit for Days 
+  geom_point(aes(y = Days), color = "black", size = 2) +  # Points for Days
+  labs(title = "Annual Trends in Net Fishery Catch (1990–Present)",
+       x = "Calendar Year",
+       y = "Fish Caught in Tonnes") +
+  scale_x_continuous(breaks = seq(1990, max(as.numeric(export$CalendarYear)), by = 4)) +  # Creates 4-year intervals on X-axis
+  scale_y_continuous(name = "Fish Caught in Tonnes", 
+                     sec.axis = sec_axis(~., name = "Days")) +  # Creates a secondary axis for Days
+  theme_minimal()
+```
