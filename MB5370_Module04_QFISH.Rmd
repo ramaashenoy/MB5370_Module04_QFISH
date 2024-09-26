@@ -65,7 +65,7 @@ guides(color = guide_legend(title = "Legend"))  # Setting the legend title to "L
 library(knitr)
 library(rmarkdown)
 setwd ("D:/Users/Desktop/Sem 3/Techniques in Marine Science 1 (MB5370)/Module 4/MB5370_Module04_QFISH") #setting the working directory
-#knit("MB5370_Module04_QFISH.Rmd") #Converts .rmd file to .md file
+knit("MB5370_Module04_QFISH.Rmd") #Converts .rmd file to .md file
 render("MB5370_Module04_QFISH.md", output_format = "html_document", output_file = "MB5370_Module04_QFISH_report.html") #converts .md file to .html document
 ```
 
